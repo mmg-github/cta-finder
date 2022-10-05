@@ -4,7 +4,7 @@ import pyxis from '../img/pyxis.png'
 
 export const Logos = () => {
   return (
-    <div className='container'>
+    <div className='container-flex'>
         <div className='logo-container'>
           <img className='logo' src={pyxis} alt="Montag Marketing Logo" />
         </div>

@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
 
 *{
-  font-family:'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.2rem;
   font-weight: 300;
+  color: #262262;
 }
-
+a{
+  overflow-wrap: break-word;
+  color: #42c8c7;
+}
+a:hover{
+  color: #eb644e;
+}
 .main{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 95vh;
 }
 .container{
   text-align: center;
@@ -19,8 +26,8 @@
 
 .card-result{
   border: 1px solid #262262;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  padding: 0.5rem 0rem;
+  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
 }
 .card-result > div{
@@ -30,6 +37,9 @@
 .card-result  p{
   margin-top:0;
   margin-bottom: 0;
+}
+.card-result a{
+  font-size: 0.8rem;
 }
 
 .btn{
@@ -66,11 +76,29 @@
 }
 .contact a{
   color: #262262;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
 }
 .contact a{
   margin: 0 .5rem;
+}
+.card-result-second{
+  background-color: rgb(241, 238, 238);
+}
+
+.flex-container{
+  /* display: flex; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  /* justify-content: space-between; */
+}
+.container-item > h3 {
+  font-weight: bold;
+}
+.container-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (min-width: 600px){
   .logo{
@@ -82,6 +110,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+
   }
   .btn:hover{
     background-color: #262262;
@@ -93,20 +122,39 @@
   
   .container-item{
     margin: 1rem;
-    display: flex;
+    /* display: flex; */
     
   }
+  
   .container-result{
-    /* min-width: 80rem; */
+    /* min-height: 20rem; */
     
+  }
+  .container-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .card-result{
-    display: flex;
+    /* display: flex; */
     min-width: 22rem;
     min-width: 30rem;
     align-items: center;
+  }
+  .flex-container{
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    /* justify-content: space-between; */
+  }
+  canvas{
+    margin-inline: 1rem;
+  }
+  .flex-container a{
+    font-size: 1rem;
   }
   .card-result > div{
     text-align: left;
   }
 }
+
