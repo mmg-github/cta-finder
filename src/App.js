@@ -6,6 +6,7 @@ import { Logos } from './components/Logos';
 import { Results } from './components/Results';
 import urls from './data/urls.json'
 
+
 function App() {
   const columnNames = Object.keys(urls[0])
   // ['first', 'second', 'third', 'forth', 'fifth', 'sixth', 'EnBitlyURL', 'SpBitlyURL', 'EnSocialMediaBitly', 'SpSocialMediaBitly']
@@ -23,6 +24,8 @@ function App() {
     // if data filtered and there is only one row but still Card component need to show: (Participant > Yes > Wisconsin)
     const [targetMarket,setTargetMarket] = useState(false)
     const [showResultHeading, setShowResultHeading] =useState(true)
+
+    
 
   
   const [data, setData] = useState([])
@@ -82,7 +85,7 @@ function App() {
             />
 
           }
-          
+         
           </div>
      </div>
   );

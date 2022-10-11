@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 *{
   font-family: 'Roboto', sans-serif;
@@ -88,8 +89,8 @@ a:hover{
 
 .flex-container{
   /* display: flex; */
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   /* justify-content: space-between; */
 }
 .container-item > h3 {
@@ -100,6 +101,69 @@ a:hover{
   justify-content: center;
   align-items: center;
 }
+.flex{
+  display: flex;
+}
+.qr-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.qr-container p{
+  font-size: 0.7rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+.qr-container p:hover{
+  text-decoration: underline;
+}
+
+.modal{
+  position: fixed;
+  background-color: rgba(65, 64, 64, 0.4);
+  top:0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal_content{
+  width: 842px;
+  height: 595px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+.hide{
+  display: none;
+}
+.bluebar{
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  background-color: #5b9bd5;
+}
+.allofus_logo{
+  position: absolute;
+  width: 100px;
+  top: 40px;
+  left: 50px;
+}
+canvas.qrPrint{
+  margin-bottom: 15px;
+}
+.btn-print{
+  position: absolute;
+  right: 30px;
+  bottom:20px
+}
+
 @media screen and (min-width: 600px){
   .logo{
     width: 180px;
@@ -157,4 +221,6 @@ a:hover{
     text-align: left;
   }
 }
+
+
 

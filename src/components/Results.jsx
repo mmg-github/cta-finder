@@ -1,9 +1,37 @@
 import QRcode from 'qrcode.react'
 import { useState } from 'react'
+import jsPDF from 'jspdf';
+import iconsForPrint from '../img/IconsForPrint.jpg'
+import allOfUs from '../img/allOfUs.jpg'
+import heading from '../img/Heading.jpg'
 
 export const Results = ({data, lang, language,showResultHeading}) => {
   const [show, setShow] = useState(null)
+  const [qrPrint, setQrPrint] = useState(null);
+  const [styleClass, setStypeClass] = useState("btn btn-restart btn-print")
+  const [modal, setModal] = useState("modal ")
+  
 
+  const generateQR = (urlForQR) =>{
+    console.log("value: ",urlForQR)
+    setQrPrint(urlForQR)
+    setModal('modal ')
+    setStypeClass("btn btn-restart btn-print ")
+  }
+
+  const generatePDF = () => {
+    //Hide print btn in PDF
+    setStypeClass("btn btn-restart btn-print hide")
+    var doc = new jsPDF('l', 'pt', "a4");
+    doc.html(document.querySelector("#modalToPrint"),{
+    callback:function(pdf){
+      pdf.save("QR.pdf");
+    }
+   })  
+}
+const closeModal = () =>{
+  setModal('modal hide')
+}
   return (
     <>
     {
@@ -38,8 +66,9 @@ export const Results = ({data, lang, language,showResultHeading}) => {
                       {
                         item.EnBitlyURL &&
                         <div className="card-result flex-container">
-                        <div>
-                          <QRcode id={item.EnBitlyURL} value={item.EnBitlyURL+"?r=qr"} fgColor={"#1d1d1e"}/>
+                        <div className='qr-container'>
+                              <QRcode id={item.EnBitlyURL} value={item.EnBitlyURL+"?r=qr"} fgColor={"#1d1d1e"} />
+                              <p onClick={() => generateQR(item.EnBitlyURL)} style={{cursor:'pointer'}}>Download</p>
                         </div>
                         <div>
                           <p>English Bitly URL</p>
@@ -57,8 +86,9 @@ export const Results = ({data, lang, language,showResultHeading}) => {
                       {
                         item.EnSocialMediaBitly &&
                       <div className="card-result flex-container">
-                        <div>
+                        <div className='qr-container'>
                           <QRcode id={item.EnSocialMediaBitly} value={item.EnSocialMediaBitly+"?r=qr"} fgColor={"#1d1d1e"}/>
+                          <p onClick={() => generateQR(item.EnSocialMediaBitly)} style={{cursor:'pointer'}}>Download</p>
                         </div>
                         <div>
                           <p>English Social Media Bitly URL</p>
@@ -105,8 +135,9 @@ export const Results = ({data, lang, language,showResultHeading}) => {
                       {
                         item.MarketwideBitlyURL &&
                         <div className='flex-container'>
-                          <div>
+                          <div className='qr-container'>
                             <QRcode id={item.MarketwideVanityURL} value={item.MarketwideBitlyURL+"?r=qr"} bgColor={"#EEEEF1"} fgColor={"#1d1d1e"}/>
+                            <p onClick={() => generateQR(item.MarketwideBitlyURL)} style={{cursor:'pointer'}}>Download</p>
                           </div>
                           <div>
                             <div  style={{marginBottom:'1rem'}}>
@@ -124,8 +155,9 @@ export const Results = ({data, lang, language,showResultHeading}) => {
                         item.SpanishMarketwideBitlyURL &&
                         <div className='flex-container'>
                         <div></div>
-                          <div>
+                          <div className='qr-container'>
                             <QRcode id={item.SpanishMarketwideVanityURL} value={item.SpanishMarketwideBitlyURL+"?r=qr"} bgColor={"#EEEEF1"} fgColor={"#1d1d1e"}/>
+                            <p onClick={() => generateQR(item.SpanishMarketwideBitlyURL)} style={{cursor:'pointer'}}>Download</p>
                           </div>
                           <div>
                             <div  style={{marginBottom:'1rem'}}>
@@ -160,6 +192,26 @@ export const Results = ({data, lang, language,showResultHeading}) => {
           <p> <a href='mailto:Analytics@MontageMarketingGroup.com' target='_blank'>Analytics@MontageMarketingGroup.com</a></p>
         </div>
       </>
+    }
+
+
+    {/* Priview QR code and generate pdf */}
+    {
+      qrPrint &&
+      <div className={modal} onClick={closeModal}>
+        <div className="modal_content" id='modalToPrint'>
+          <div className="bluebar">
+          </div>
+          <div>
+            <img className='allofus_logo' src={allOfUs} alt="Logo" />
+          </div>
+          <img src={heading} alt="heading" style={{width:'350px', marginTop:'70px', marginBottom:'0px'}}/>
+          <p style={{margin:0, marginBottom:'15px'}}>{qrPrint}</p>
+          <QRcode id={qrPrint+"?r=qr"} value={qrPrint}  size={320} className="qrPrint"/>
+          <img src={iconsForPrint} alt={qrPrint} width="300ox"/>
+          <button className={styleClass} onClick={generatePDF} type="primary" id='printBtn'>Download PDF</button>
+        </div>
+      </div>
     }
     
     </>
