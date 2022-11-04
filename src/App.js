@@ -75,6 +75,7 @@ function App() {
               filterData = {filterData}
               question = {researcher === "" ? questions[columnIndex] : researcher}
               targetMarket = {targetMarket}
+              language ={language}
             />
             :
             <Results 

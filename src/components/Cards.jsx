@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Cards = ({data, columnName, filterData, question,targetMarket}) => {
+export const Cards = ({data, columnName, filterData, question,language}) => {
 
     // get all values of a column:['Participant', 'Participant','Researcher' ,'Researcher']
     const values = data.map(item => item[columnName])
@@ -14,7 +14,7 @@ export const Cards = ({data, columnName, filterData, question,targetMarket}) => 
         distinctvalues.sort()
     } 
 
-
+    console.log(data)
     
   return (
     <>
